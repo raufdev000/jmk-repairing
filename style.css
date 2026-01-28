@@ -1,0 +1,1062 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: clip; 
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+section, header, .hero-section {
+  overflow-x: clip;
+}
+[class*="slide"],
+[class*="animate"],
+.carousel-track {
+  will-change: transform;
+  overflow-x: clip;
+}
+.position-absolute,
+.position-relative {
+  max-width: 100%;
+  overflow-x: clip;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+  .font-ui {
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.carousel-wrapper {
+  background: #fdfcfc;
+  padding-top: 20px;
+}
+
+.infinite-carousel {
+  position: relative;
+   overflow-x: clip;
+      backface-visibility: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+  z-index: 10;
+    will-change: transform;
+  transform: translateZ(0); 
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* CARD DESIGN */
+.custom-card {
+  width: 260px;
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.35s ease;
+  background: #fdfbfb;
+  
+}
+
+.custom-card img {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Professional Hover Effect */
+.custom-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* BUTTON STYLE */
+.custom-btn {
+  background-color: #f50d0d;
+  color: red;
+  border-radius: 30px;
+  padding: 8px 20px;
+  transition: all 0.3s ease;
+  border: none;
+  width: 100%;
+}
+
+/* Button changes when card is hovered */
+.custom-card:hover .custom-btn {
+  background-color: #1e88e5;
+  color: #d2e4f3;
+}
+
+.appointment-card {
+  background: transparent;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fdfeff;
+}
+
+.appointment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.custom-input {
+  border-radius: 12px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+  border-color: #e53935;
+  box-shadow: 0 0 0 0.2rem rgba(229,57,53,0.15);
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #e53935, #f73b02);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(45deg, #1e88e5, #42a5f5);
+  transform: scale(1.03);
+}
+.dropdown-menu-dark .dropdown-item {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+  background-color: #fd1814; /* Red */
+  color: #fff;
+}
+.about-section {
+  min-height: auto;
+  background: url('download (14).jpg') center/cover no-repeat;
+  position: relative;
+  padding: 80px 15px;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* dark overlay */
+  z-index: 0;
+}
+
+.about-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glass Effect Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+
+.highlight-card h3 {
+  color: #ffcc00;
+}
+
+.feature-item h6 {
+  color: #ffffff;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+}
+.glass-card .text-muted {
+  color: rgba(19, 109, 245, 0.75) !important;
+  font-weight: 400;
+}.modern-faq .faq-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.modern-faq .faq-header h6 {
+  margin: 0;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  
+}
+
+/* Hover heading + entire item */
+.modern-faq .faq-item:hover {
+ background: linear-gradient(
+    135deg,        /* Angle for professional look */
+    #1e88e5 0%,    /* Blue start */
+    #42a5f5 40%,   /* Lighter blue blending */
+    #ef5350 60%,   /* Light red blending */
+    #e53935 100%   /* Red end */
+  ); /* blue hover background */
+  color: #fff;
+}
+
+.modern-faq .faq-item:hover h6 {
+  color: #fff;
+}
+
+/* Plus sign styling */
+.modern-faq .faq-plus {
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+
+/* Body paragraph */
+.modern-faq .faq-body {
+  display: none;
+  padding: 10px 0 0 0;
+  font-size: 0.95rem;
+  color: #fff;
+  border-radius: 8px;
+}
+
+/* Open FAQ background */
+.modern-faq .faq-item.open {
+  background: linear-gradient(
+    135deg,        /* Angle for professional look */
+    #1e88e5 0%,    /* Blue start */
+    #42a5f5 40%,   /* Lighter blue blending */
+    #ef5350 60%,   /* Light red blending */
+    #e53935 100%   /* Red end */
+  );
+  color: #fff;
+}
+
+.faq-image-box img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 15px;
+}.footer-section {
+  background-color: #ffffff;
+  color: #333;
+  border-top: 1px solid #ddd;
+}
+
+.footer-section .footer-link {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section .footer-link:hover {
+  color: #1e88e5;
+ font-weight: 600;
+}
+
+.footer-section .social-icon svg {
+  transition: all 0.4s ease;
+  color: #333;
+}
+
+.footer-section .social-icon:hover svg {
+  color: #1e88e5;
+  transform: scale(1.4) rotate(10deg); /* Slight rotation + scale for pro shine effect */
+  filter: drop-shadow(0 0 8px #1e88e5); /* Glow effect */
+}
+
+.footer-section img {
+  max-height: 80px;
+}
+
+.footer-section small, .footer-section p {
+  color: #555;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100vh; /* full screen height */
+  overflow: hidden;
+
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills area without distortion */
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .footer-section .row {
+    text-align: center;
+  }
+
+  .footer-section .col-md-3,
+  .footer-section .col-md-4,
+  .footer-section .col-md-5 {
+    justify-content: center !important;
+  }
+
+  .footer-section .d-flex {
+    justify-content: center !important;
+  }
+
+  .footer-section .social-icon {
+    margin: 0 5px;
+  }
+}
+.appointment-section {
+  top: -160px; /* ye value adjust karke overlap control kar sakte ho */
+  position: relative;
+  z-index: 5;
+  bottom: 0;
+}
+
+/* Remove extra space from section */
+.appointment-section {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove container default Bootstrap padding */
+.appointment-section .container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Reduce card internal spacing slightly but keep layout */
+.appointment-card {
+  padding: 20px !important;
+  margin: 0 !important;
+}
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 15px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .custom-card {
+    width: 200px;
+  }
+  .custom-card img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 490px) {
+  .infinite-carousel {
+    overflow: hidden;
+    margin-top: -50px; 
+  }
+}
+@media (max-width: 768px) {
+  .appointment-section {
+    top: -60px;
+  }
+
+  .appointment-card {
+    max-width: 100%;
+  }
+}
+
+.phone {
+  color: #e63946;
+  font-weight: 600;
+}
+
+.email {
+  color: #e63946;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  background: #f2f2f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #e63946;
+  color: #fff;
+}
+.hover-blue {
+  transition: all 0.3s ease-in-out; /* smooth animation */
+  cursor: default; /* click effect disable look */
+}
+
+.hover-blue:hover {
+  background-color: #0d6efd; /* Bootstrap primary blue */
+  color: white; /* text color change for contrast */
+  transform: translateY(-6px); /* subtle lift effect */
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15); /* noticeable but clean */
+  font-weight: bold;
+}
+.map-container {
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+.font-ui {
+  font-family: 'Poppins', sans-serif;
+font-size: larger;
+}
+
+/* LEFT SIDE */
+.hero-left {
+  background-color: #0a7c8c;
+  color: white;
+}
+.hero-right {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000; /* optional (empty space clean lage) */
+}
+/* Nav Links */
+.navbar .nav-link {
+  font-weight: 500;
+  color: #333;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover Red */
+.navbar .nav-link:hover {
+  color: #fc0720;
+}
+
+/* Active Link Red */
+.navbar .active-nav {
+  color: #fc1229 !important;
+}
+
+/* Underline Animation */
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #dc3545;
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .active-nav::after {
+  width: 100%;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+  border-radius: 10px;
+  padding: 5px 0;
+}
+
+.dropdown-item {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+
+.image-box{
+  width: 100%;
+  overflow: hidden;
+}
+.image-box img{
+  transition: opacity 0.45s ease-in-out;
+}
+
+.image-box img.fade-out{
+  opacity: 0;
+}
+
+.image-box img{
+  width: 100%;
+  height: 100%;
+  max-height: 690px;   /* tum change kar sakte ho */
+  object-fit: cover;  /* 🔥 ye hi main cheez hai */
+  display: block;
+}
+.image-grid{
+  height: 100%;
+}
+
+.img-box{
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.img-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+ 
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding: 50px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s linear;
+    }
+
+    .carousel-card {
+      flex: 0 0 16.66%; /* 6 cards per view */
+      max-width: 200px;  /* max width for professional look */
+      height: 250px;     /* fixed height */
+      background: #ecebeb;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .carousel-card img {
+      width: 100%;
+      height: 90%;
+      object-fit: cover;
+    }
+
+    .carousel-card h5 {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    .carousel-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  
+  /* Only darken images */
+  .img-dark {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Darken the image */
+    filter: brightness(60%);
+    transition: filter 0.3s;
+  }
+
+  /* Optional: lighten slightly on hover */
+  .carousel-card:hover .img-dark {
+    filter: brightness(70%);
+  }
+
+
+  /* Professional Hover Effect - reusable class */
+  .hover-professional {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .hover-professional:hover {
+    transform: translateY(-8px); /* slight lift */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* smooth shadow */
+  }
+
+.scroll-pro {
+  opacity: 0;
+  transform: translateY(60px) scale(0.96);
+  transition: 
+    opacity 0.8s ease-out,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-pro.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(.2,.65,.3,1);
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FAQ hover effect */
+.faq-item {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.faq-item:hover {
+  background-color: #546bee; /* soft professional blue */
+}
+.mission-vision-card {
+  background-color: #fff;
+  transition: all 0.35s ease;
+}
+
+.mission-vision-card:hover {
+  transform: translateY(-6px);
+  border-color: #0d6efd; /* Bootstrap primary */
+  box-shadow: 0 14px 35px rgba(13, 110, 253, 0.15);
+}
+
+.mission-vision-card h4 {
+  transition: color 0.3s ease;
+}
+
+.mission-vision-card:hover h4 {
+  color: #0d6efd;
+}
+/* FULL RED TOGGLER */
+.red-toggler {
+  background-color: #ff0b23;   /* Bootstrap red */
+  border: none;
+  padding: 0.45rem 0.6rem;
+}
+
+/* ICON BHI RED KE ANDAR WHITE */
+.red-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2.5' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Hover thora dark red (professional feel) */
+.red-toggler:hover {
+  background-color: #bb2d3b;
+}
+
+
+.faq-item:hover h6,
+.faq-item:hover p,
+.faq-item:hover .faq-plus {
+  color: #fcfdfd; /* Bootstrap primary blue */
+}
+ .img-mini {
+    height: 110px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  /* ---------------- Specialists, FAQs, Images Scroll Animation ---------------- */
+/* ---------------- Flip & Scale Animation ---------------- */
+.scroll-flip {
+  opacity: 0;
+  transform: rotateY(20deg) scale(0.9); /* start rotated & slightly smaller */
+  transform-origin: center;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-flip.active {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1); /* final position */
+}
+
+/* Optional hover lift */
+.hover-lift:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
+.common{
+  position: absolute;
+  z-index: 10;
+  background: transparent;
+  font-size: large;
+}
+.hero-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* LEFT SIDE */
+.hero-left {
+  background: #0d6efd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* FORM CARD */
+.form-card {
+  background: #fff;
+  padding: 30px;
+  width: 80%;
+  max-width: 420px;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+}
+.specialists-section {
+  background: rgba(0,0,0,0.05);
+  padding: 40px 15px;
+}
+
+.specialist-img-box {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.specialist-img-box .specialist-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border: 4px solid rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.specialist-img-box:hover .specialist-img {
+  transform: scale(1.08);
+}
+
+.specialist-img-box.active .specialist-img {
+  opacity: 1;
+  transform: scale(1.1);
+  border-color: #d2e4f3;
+}
+
+.specialist-img-box.inactive .specialist-img {
+  opacity: 0.4;
+  transform: scale(0.95);
+}
+
+.specialist-data {
+  background: rgba(255,255,255,0.12);
+  border-radius: 15px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.specialist-info h4 {
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.specialist-info p {
+  font-size: 0.95rem;
+  color: #1a64ec;
+}
+/* RIGHT SIDE */
+.hero-right {
+  position: relative;
+  width: auto;
+  height: auto; /* 🔥 FIXED VISUAL HEIGHT */
+  overflow: hidden;
+}
+
+
+.hero-left {
+  background: #0d6efd;
+  display: flex;
+  flex-direction: column; /* 🔥 IMPORTANT */
+  align-items: center;
+  justify-content: center;
+}/* PERFECT IMAGE FIX */
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* industry standard */
+ /* smart crop */
+  display: block;
+}/* HERO IMAGE */
+/* HERO IMAGE */
+.hero-section {
+  height: 100vh;
+  min-height: 600px;
+}
+
+.hero-image {
+  background: url("Download\ Abandoned\ car\ factory\ old\ steel\ machinery\,\ ruined\ workshop\,\ unhygienic\ occupation\ generated\ by\ AI\ for\ free.jpg") center center / cover no-repeat;
+  height: 80%;
+  width: 100%;
+}
+
+/* NAVBAR LINKS */
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* Underline always for active */
+.active-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #ff4d4d;
+}
+
+/* Hover underline for others */
+.navbar .nav-link:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #ff4d4d;
+  transition: 0.3s ease;
+}
+
+/* Hover color */
+.navbar .nav-link:hover {
+  color: #ff4d4d;
+}
+
+/* DROPDOWN */
+.dropdown-menu {
+  border-radius: 10px;
+}
+
+/* TOGGLER RED FOR SMALL SCREENS */
+.red-toggler {
+  border: none;
+}
+
+.navbar-toggler.red-toggler .navbar-toggler-icon {
+  background-color: #ff4d4d; /* red toggler */
+}
+
+.slide-left,
+.slide-right {
+  opacity: 0;
+  transition: all 0.9s cubic-bezier(.2,.65,.3,1);
+  will-change: transform, opacity;
+}
+
+.slide-left {
+  transform: translateX(-80px);
+}
+
+.slide-right {
+  transform: translateX(80px);
+}
+
+.slide-left.active,
+.slide-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Bouncy keyframes */
+@keyframes bounceY {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }   /* bounce up */
+  60% { transform: translateY(-10px); }   /* smaller bounce */
+}
+
+/* Class to apply bounce */
+.bounce-animate {
+  animation: bounceY 2s ease infinite;   /* 2s loop */
+  will-change: transform;
+}
+
+/* Collapse menu below toggler for small screens */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: rgba(0,0,0,0.85); /* optional dark bg */
+    margin-top: 0.5rem;
+    border-radius: 10px;
+  }
+  .navbar-nav {
+    text-align: left;
+  }
+}
+
+/* Footer / column logo bigger on all screens */
+.col-md-3 img {
+  height: 100px;     /* pehle 60 tha, ab bada */
+  width: auto;
+}
+
+@media (max-width: 551px) {
+  .col-md-3 img {
+    height: 110px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-md-3 img {
+    height: 110px;
+  }
+}
+
+/* RESPONSIVE FIX (MOBILE) */
+
+/* ---------------- Mobile Responsive ---------------- */
+@media (max-width: 576px) {
+  .specialist-card {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+  }
+  .specialist-card img {
+    width: 150px;
+    height: 150px;
+    margin: 0 0 10px 0;
+  }
+  .specialist-info ul {
+    padding-left: 0;
+    list-style-position: inside;
+  }
+}
+
+  /* Medium screens: slightly smaller height */
+  @media (min-width: 768px) {
+    .img-mini {
+      height: 90px;
+    }
+  }
+  /* FAQ accordion default state */
+.faq-item p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-bottom: 0;
+}
+
+/* Open state */
+.faq-item.active p {
+  max-height: 200px; /* 3–4 lines ke liye enough */
+}
+
+/* Plus rotate (professional touch) */
+.faq-plus {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-plus {
+  transform: rotate(45deg);
+}
+
+
+  .img-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .shop-name {
+  font-size: 20px; /* default desktop size */
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .shop-name {
+    font-size: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .shop-name {
+    font-size: 13px;
+  }
+}
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .carousel-card { flex: 0 0 20%; max-width: 180px; }
+    }
+
+    @media (max-width: 992px) {
+      .carousel-card { flex: 0 0 25%; max-width: 160px; }
+    }
+
+    @media (max-width: 768px) {
+      .carousel-card { flex: 0 0 33.33%; max-width: 140px; }
+    }
+
+    @media (max-width: 576px) {
+      .carousel-card { flex: 0 0 50%; max-width: 120px; }
+    }   
+/* Default: jo tum already use kar rahe ho – untouched */
+
+/* Small screens fix */
+@media (max-width: 576px) {
+  .form-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Small screens fix */
+@media (max-width: 576px) {
+  .form-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 490px) {
+  .carousel-track {
+    animation: scrollMobile 18s linear infinite;
+  }
+}
+
+@keyframes scrollMobile {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
