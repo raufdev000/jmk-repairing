@@ -360,11 +360,14 @@ body {
 
 .feature-item p {
   font-size: 0.95rem;
-}
-.glass-card .text-muted {
-  color: rgba(19, 109, 245, 0.75) !important;
+}.glass-card .text-muted {
+  color: #136df5 !important;
   font-weight: 400;
-}.modern-faq .faq-item {
+  text-shadow: 
+    0 0 4px rgba(172, 163, 163, 0.6),
+    0 0 4px rgba(19, 109, 245, 0.4);
+}
+.modern-faq .faq-item {
   background: rgba(255, 255, 255, 0.1);
   padding: 15px 20px;
   border-radius: 12px;
