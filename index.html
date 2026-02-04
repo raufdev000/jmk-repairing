@@ -9,8 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-    <style>
+     <style>
       /* Loading Screen Styles */
       .loading-screen {
         position: fixed;
@@ -18,25 +17,111 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: #000;
+        background: #0a0a0a;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         z-index: 9999;
+        overflow: hidden;
+      }
+
+      .lock-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+      }
+
+      /* SVG Animations */
+      #lockSvg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+      }
+
+      .lock-body-svg {
+        fill: url(#lockGradient);
+      }
+
+      .lock-shackle-svg {
+        fill: none;
+        stroke: #b8b8b8;
+        stroke-width: 12;
+        stroke-linecap: round;
+        transform-origin: 30% 100%;
+      }
+
+      .keyhole-svg {
+        fill: #1a1a1a;
+      }
+
+      .key-svg {
+        fill: url(#keyGradient);
+        opacity: 0;
+        transform-origin: center;
+      }
+
+      .glow-circle {
+        fill: url(#glowGradient);
+        opacity: 0;
+      }
+
+      /* Loading Text */
+      .loading-text-container {
+        margin-top: 40px;
+        text-align: center;
       }
 
       .loading-text {
         font-family: 'Poppins', sans-serif;
-        font-size: 3.5rem;
-        font-weight: 700;
+        font-size: 1.5rem;
+        font-weight: 600;
         color: #fff;
-        letter-spacing: 3px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
         opacity: 0;
       }
 
+      .dots {
+        display: inline-block;
+      }
+
+      .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #FFD700;
+        border-radius: 50%;
+        margin: 0 3px;
+        animation: dotPulse 1.5s infinite;
+      }
+
+      .dot:nth-child(2) { animation-delay: 0.2s; }
+      .dot:nth-child(3) { animation-delay: 0.4s; }
+
+      @keyframes dotPulse {
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+
       @media (max-width: 768px) {
+        .lock-container {
+          width: 250px;
+          height: 250px;
+        }
         .loading-text {
-          font-size: 2.5rem;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .lock-container {
+          width: 200px;
+          height: 200px;
+        }
+        .loading-text {
+          font-size: 1rem;
+          letter-spacing: 2px;
         }
       }
 
@@ -52,11 +137,70 @@
   </head>
   <body class="loading">
     
-    <!-- Loading Screen -->
-    <div class="loading-screen">
-      <h1 class="loading-text">Jumma Khan</h1>
+ <div class="loading-screen">
+  <div class="lock-container">
+    <svg id="lockSvg" viewBox="0 0 200 220">
+      <!-- Gradients -->
+      <defs>
+        <linearGradient id="lockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#d4d4d4;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#a0a0a0;stop-opacity:1" />
+        </linearGradient>
+        
+        <linearGradient id="keyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+        </linearGradient>
+        
+        <radialGradient id="glowGradient">
+          <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.6" />
+          <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0" />
+        </radialGradient>
+      </defs>
+      
+      <!-- Glow Effect -->
+      <circle class="glow-circle" cx="100" cy="110" r="80"/>
+      
+      <!-- Lock Shackle -->
+      <path class="lock-shackle-svg" 
+            d="M 70 70 Q 70 40, 100 40 Q 130 40, 130 70" 
+            stroke-width="14"/>
+      
+      <!-- Lock Body -->
+      <rect class="lock-body-svg" x="55" y="85" width="90" height="70" rx="12"/>
+      
+      <!-- Keyhole -->
+      <circle class="keyhole-svg" cx="100" cy="115" r="8"/>
+      <path class="keyhole-svg" d="M 96 120 L 104 120 L 102 135 L 98 135 Z"/>
+      
+      <!-- Key (starts off-screen) -->
+      <g class="key-svg" transform="translate(-100, 110)">
+        <!-- Key Bow (handle) -->
+        <circle cx="0" cy="0" r="15" fill="url(#keyGradient)"/>
+        <circle cx="0" cy="0" r="6" fill="#1a1a1a"/>
+        
+        <!-- Key Blade -->
+        <rect x="12" y="-4" width="60" height="8" rx="2" fill="url(#keyGradient)"/>
+        
+        <!-- Key Teeth -->
+        <rect x="52" y="-8" width="4" height="6" fill="url(#keyGradient)"/>
+        <rect x="58" y="-10" width="4" height="10" fill="url(#keyGradient)"/>
+        <rect x="64" y="-8" width="4" height="7" fill="url(#keyGradient)"/>
+        
+        <!-- Key Tip -->
+        <polygon points="72,-4 78,0 72,4" fill="url(#keyGradient)"/>
+      </g>
+    </svg>
+  </div>
+  
+  <!-- Loading Text -->
+  <div class="loading-text-container">
+    <div class="loading-text">
+      
+   
     </div>
-
+  </div>
+</div>
     <!-- Main Content -->
     <div class="main-content">
 <header class="hero-section font-ui">
@@ -565,40 +709,101 @@
     <!-- GSAP Loading Animation Script -->
     <script>
       // GSAP Loading Animation
-      window.addEventListener('load', function() {
-        const tl = gsap.timeline();
-        
-        // Animate loading text
-        tl.to('.loading-text', {
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out'
-        })
-        .to('.loading-text', {
-          scale: 1.1,
-          duration: 0.5,
-          ease: 'power1.inOut',
-          yoyo: true,
-          repeat: 1
-        })
-        .to('.loading-screen', {
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power2.inOut'
-        })
-        .to('.loading-screen', {
-          display: 'none',
-          duration: 0
-        })
-        .to('.main-content', {
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          onComplete: function() {
-            document.body.classList.remove('loading');
-          }
-        });
-      });
+ // GSAP SVG Lock & Key Animation
+  window.addEventListener('load', function() {
+    const tl = gsap.timeline({
+      defaults: { ease: 'power2.out' }
+    });
+    
+    // Loading text appears
+    tl.to('.loading-text', {
+      opacity: 1,
+      duration: 0.5
+    })
+    
+    // Key slides in from left to lock
+    .to('.key-svg', {
+      opacity: 1,
+      x: 180,  // Move key to keyhole position
+      duration: 1.5,
+      ease: 'power2.inOut'
+    }, '+=0.5')
+    
+    // Key inserts into keyhole (slight push)
+    .to('.key-svg', {
+      x: 185,
+      duration: 0.3,
+      ease: 'power1.in'
+    })
+    
+    // Key rotates 90 degrees (unlocking)
+    .to('.key-svg', {
+      rotation: 90,
+      transformOrigin: '100px 110px',
+      duration: 0.7,
+      ease: 'back.out(2)'
+    })
+    
+    // Glow effect appears
+    .to('.glow-circle', {
+      opacity: 1,
+      scale: 1.2,
+      transformOrigin: 'center',
+      duration: 0.5
+    }, '-=0.4')
+    
+    // Lock shackle opens
+    .to('.lock-shackle-svg', {
+      rotation: -45,
+      transformOrigin: '30% 100%',
+      duration: 0.8,
+      ease: 'elastic.out(1, 0.5)'
+    }, '-=0.3')
+    
+    // Update text to "Unlocked"
+    .to('.loading-text', {
+      scale: 1.1,
+      duration: 0.3,
+      onStart: function() {
+        document.querySelector('.loading-text').innerHTML = 'Jumma khan';
+      }
+    })
+    
+    // Hold for a moment
+    .to({}, { duration: 0.6 })
+    
+    // Glow fades
+    .to('.glow-circle', {
+      opacity: 0,
+      duration: 0.4
+    })
+    
+    // Everything fades out
+    .to(['.loading-text', '#lockSvg'], {
+      opacity: 0,
+      duration: 0.6
+    }, '-=0.2')
+    
+    .to('.loading-screen', {
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.inOut'
+    })
+    
+    .set('.loading-screen', {
+      display: 'none'
+    })
+    
+    // Main content appears
+    .to('.main-content', {
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power2.out',
+      onComplete: function() {
+        document.body.classList.remove('loading');
+      }
+    });
+  });
     </script>
     
     <script src="script.js"></script>
