@@ -704,106 +704,145 @@
     </div>
   </div>
 </footer>
-</div>
-
-    <!-- GSAP Loading Animation Script -->
-    <script>
-      // GSAP Loading Animation
- // GSAP SVG Lock & Key Animation
-  window.addEventListener('load', function() {
-    const tl = gsap.timeline({
-      defaults: { ease: 'power2.out' }
-    });
-    
-    // Loading text appears
-    tl.to('.loading-text', {
-      opacity: 1,
-      duration: 0.5
-    })
-    
-    // Key slides in from left to lock
-    .to('.key-svg', {
-      opacity: 1,
-      x: 180,  // Move key to keyhole position
-      duration: 1.5,
-      ease: 'power2.inOut'
-    }, '+=0.5')
-    
-    // Key inserts into keyhole (slight push)
-    .to('.key-svg', {
-      x: 185,
-      duration: 0.3,
-      ease: 'power1.in'
-    })
-    
-    // Key rotates 90 degrees (unlocking)
-    .to('.key-svg', {
-      rotation: 90,
-      transformOrigin: '100px 110px',
-      duration: 0.7,
-      ease: 'back.out(2)'
-    })
-    
-    // Glow effect appears
-    .to('.glow-circle', {
-      opacity: 1,
-      scale: 1.2,
-      transformOrigin: 'center',
-      duration: 0.5
-    }, '-=0.4')
-    
-    // Lock shackle opens
-    .to('.lock-shackle-svg', {
-      rotation: -45,
-      transformOrigin: '30% 100%',
-      duration: 0.8,
-      ease: 'elastic.out(1, 0.5)'
-    }, '-=0.3')
-    
-    // Update text to "Unlocked"
-    .to('.loading-text', {
-      scale: 1.1,
-      duration: 0.3,
-      onStart: function() {
-        document.querySelector('.loading-text').innerHTML = 'Jumma khan';
-      }
-    })
-    
-    // Hold for a moment
-    .to({}, { duration: 0.6 })
-    
-    // Glow fades
-    .to('.glow-circle', {
-      opacity: 0,
-      duration: 0.4
-    })
-    
-    // Everything fades out
-    .to(['.loading-text', '#lockSvg'], {
-      opacity: 0,
-      duration: 0.6
-    }, '-=0.2')
-    
-    .to('.loading-screen', {
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.inOut'
-    })
-    
-    .set('.loading-screen', {
-      display: 'none'
-    })
-    
-    // Main content appears
-    .to('.main-content', {
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power2.out',
-      onComplete: function() {
-        document.body.classList.remove('loading');
-      }
-    });
-  });
+<script>
+        // ==============================================
+        // ONE-TIME LOADING ANIMATION
+        // Session-based: Runs only once per browser session
+        // ==============================================
+        
+        function runLoadingAnimation() {
+            const tl = gsap.timeline({
+                defaults: { ease: 'power2.out' }
+            });
+            
+            // Loading text appears
+            tl.to('.loading-text', {
+                opacity: 1,
+                duration: 0.5
+            })
+            
+            // Key slides in from left to lock
+            .to('.key-svg', {
+                opacity: 1,
+                x: 180,  // Move key to keyhole position
+                duration: 1.5,
+                ease: 'power2.inOut'
+            }, '+=0.5')
+            
+            // Key inserts into keyhole (slight push)
+            .to('.key-svg', {
+                x: 185,
+                duration: 0.3,
+                ease: 'power1.in'
+            })
+            
+            // Key rotates 90 degrees (unlocking)
+            .to('.key-svg', {
+                rotation: 90,
+                transformOrigin: '100px 110px',
+                duration: 0.7,
+                ease: 'back.out(2)'
+            })
+            
+            // Glow effect appears
+            .to('.glow-circle', {
+                opacity: 1,
+                scale: 1.2,
+                transformOrigin: 'center',
+                duration: 0.5
+            }, '-=0.4')
+            
+            // Lock shackle opens
+            .to('.lock-shackle-svg', {
+                rotation: -45,
+                transformOrigin: '30% 100%',
+                duration: 0.8,
+                ease: 'elastic.out(1, 0.5)'
+            }, '-=0.3')
+            
+            // Update text to "Unlocked"
+            .to('.loading-text', {
+                scale: 1.1,
+                duration: 0.3,
+                onStart: function() {
+                    document.querySelector('.loading-text').innerHTML = 'Jumma Khan';
+                }
+            })
+            
+            // Hold for a moment
+            .to({}, { duration: 0.6 })
+            
+            // Glow fades
+            .to('.glow-circle', {
+                opacity: 0,
+                duration: 0.4
+            })
+            
+            // Everything fades out
+            .to(['.loading-text', '#lockSvg'], {
+                opacity: 0,
+                duration: 0.6
+            }, '-=0.2')
+            
+            .to('.loading-screen', {
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.inOut'
+            })
+            
+            .set('.loading-screen', {
+                display: 'none'
+            })
+            
+            // Main content appears
+            .to('.main-content', {
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.out',
+                onComplete: function() {
+                    document.body.classList.remove('loading');
+                    // Set flag in sessionStorage that animation has played
+                    sessionStorage.setItem('loadingAnimationPlayed', 'true');
+                }
+            });
+        }
+        
+        function skipLoadingAnimation() {
+            // Immediately hide loading screen and show content
+            const loadingScreen = document.querySelector('.loading-screen');
+            const mainContent = document.querySelector('.main-content');
+            
+            gsap.set(loadingScreen, { display: 'none' });
+            gsap.set(mainContent, { opacity: 1 });
+            document.body.classList.remove('loading');
+        }
+        
+        // Main Logic
+        window.addEventListener('load', function() {
+            // Check if animation has already played in this session
+            const hasPlayed = sessionStorage.getItem('loadingAnimationPlayed');
+            
+            if (hasPlayed === 'true') {
+                // Skip animation - user has already seen it
+                skipLoadingAnimation();
+                console.log('✅ Loading animation skipped (already played this session)');
+            } else {
+                // Run animation - first time in this session
+                runLoadingAnimation();
+                console.log('🎬 Loading animation playing...');
+            }
+        });
+        
+        // Demo function to reset for testing
+        function resetLoadingAnimation() {
+            sessionStorage.removeItem('loadingAnimationPlayed');
+            alert('Loading animation reset! Reload page to see it again.');
+        }
+        
+        // Optional: Clear on tab close (uncomment if you want)
+        // window.addEventListener('beforeunload', function() {
+        //     sessionStorage.removeItem('loadingAnimationPlayed');
+        // });
     </script>
     
     <script src="script.js"></script>

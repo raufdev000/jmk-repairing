@@ -675,6 +675,20 @@ font-size: larger;
   color: #fff;
 }
 
+.dropdown-menu {
+  border: none !important;
+  margin-top: 8px;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease, margin-top 0.2s ease;
+}
+
+.dropdown-menu.show {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0;
+}
 
 .image-box{
   width: 100%;

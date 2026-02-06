@@ -153,3 +153,21 @@ document.addEventListener('DOMContentLoaded', function() {
     navbar.style.display = 'block';
     navbar.style.opacity = '1';
 });
+
+document.querySelectorAll('.nav-item.dropdown').forEach((dropdown) => {
+  let timeout;
+
+  dropdown.addEventListener('mouseenter', () => {
+    clearTimeout(timeout);
+    const toggle = dropdown.querySelector('[data-bs-toggle="dropdown"]');
+    bootstrap.Dropdown.getOrCreateInstance(toggle).show();
+  });
+
+  dropdown.addEventListener('mouseleave', () => {
+    const toggle = dropdown.querySelector('[data-bs-toggle="dropdown"]');
+    timeout = setTimeout(() => {
+      bootstrap.Dropdown.getOrCreateInstance(toggle).hide();
+    }, 120);
+  });
+});
+

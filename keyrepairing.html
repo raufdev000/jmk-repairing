@@ -21,18 +21,18 @@
   transform: scale(1.05);
 }
 
-.feature-card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-}
-
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 28px rgba(13,110,253,0.15);
-  background: #0d6efd;
-  color: #fff;
+  background: linear-gradient(rgb(153, 193, 211),rgb(183, 226, 230));
+  color: #ee5f55;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(13,110,253,0.15);
+  background: linear-gradient(rgb(153, 193, 211),rgb(183, 226, 230));
+  color: #ee5f55;
+  border-radius: 15px;
 }
 
 .feature-card:hover p {
@@ -74,11 +74,19 @@
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
 
-          <!-- DROPDOWN -->
-          <li class="nav-item dropdown">
+       <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active-nav" href="#" role="button" data-bs-toggle="dropdown">
               Work's
             </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                  <li><a class="dropdown-item" href="suitcaserepairing.html">Suitcase repairing</a></li>
+              <li><a class="dropdown-item" href="lockrepairing.html">lock Repairing</a></li>
+              <li><a class="dropdown-item" href="Phonerepairing.html">Phone Repairing</a></li>
+              <li><a class="dropdown-item" href="watches.html">Watch Repairing</a></li>
+              <li><a class="dropdown-item" href="leather.html">Leather work's</a></li>
+              <li><a class="dropdown-item" href="shoe.html">Shoe Repairing</a></li>
+              <li><a class="dropdown-item" href="keyrepairing.html">Key duplicating</a></li>         
+            </ul>
           </li>
 
         </ul>
