@@ -171,3 +171,108 @@ document.querySelectorAll('.nav-item.dropdown').forEach((dropdown) => {
   });
 });
 
+// Get carousel track element
+const carouselTrack = document.querySelector('.carousel-track');
+
+let isDragging = false;
+let startX;
+let scrollVelocity = 0;
+
+// Mouse Events
+carouselTrack.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.clientX;
+  scrollVelocity = 0;
+  
+  // Pause animation
+  carouselTrack.style.animationPlayState = 'paused';
+  carouselTrack.style.cursor = 'grabbing';
+});
+
+carouselTrack.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  
+  const currentX = e.clientX;
+  const diff = currentX - startX;
+  
+  // Calculate velocity for smooth scroll
+  scrollVelocity = diff * 0.5; // Speed control
+  
+  // Get current transform
+  const computedStyle = window.getComputedStyle(carouselTrack);
+  const matrix = new DOMMatrix(computedStyle.transform);
+  const currentTransform = matrix.m41;
+  
+  // Apply drag movement
+  carouselTrack.style.transform = `translateX(${currentTransform + scrollVelocity}px)`;
+  
+  startX = currentX;
+});
+
+carouselTrack.addEventListener('mouseup', () => {
+  isDragging = false;
+  
+  // Resume normal animation
+  carouselTrack.style.animationPlayState = 'running';
+  carouselTrack.style.cursor = 'grab';
+});
+
+carouselTrack.addEventListener('mouseleave', () => {
+  if (isDragging) {
+    isDragging = false;
+    
+    // Resume normal animation
+    carouselTrack.style.animationPlayState = 'running';
+    carouselTrack.style.cursor = 'grab';
+  }
+});
+
+// Touch Events for Mobile
+let touchStartX = 0;
+let touchVelocity = 0;
+
+carouselTrack.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  touchStartX = e.touches[0].clientX;
+  touchVelocity = 0;
+  
+  // Pause animation
+  carouselTrack.style.animationPlayState = 'paused';
+});
+
+carouselTrack.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  
+  const currentX = e.touches[0].clientX;
+  const diff = currentX - touchStartX;
+  
+  // Calculate velocity
+  touchVelocity = diff * 0.5;
+  
+  // Get current transform
+  const computedStyle = window.getComputedStyle(carouselTrack);
+  const matrix = new DOMMatrix(computedStyle.transform);
+  const currentTransform = matrix.m41;
+  
+  // Apply drag movement
+  carouselTrack.style.transform = `translateX(${currentTransform + touchVelocity}px)`;
+  
+  touchStartX = currentX;
+});
+
+carouselTrack.addEventListener('touchend', () => {
+  isDragging = false;
+  
+  // Resume normal animation
+  carouselTrack.style.animationPlayState = 'running';
+});
+
+carouselTrack.addEventListener('touchcancel', () => {
+  isDragging = false;
+  
+  // Resume normal animation
+  carouselTrack.style.animationPlayState = 'running';
+});
+
+// Set initial cursor
+carouselTrack.style.cursor = 'grab';
